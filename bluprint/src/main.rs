@@ -1,9 +1,12 @@
-mod scenes;
+#![feature(let_chains)]
+mod world;
 mod resources;
+mod scenes;
 
 use bevy::prelude::*;
+use bevy_egui::EguiPlugin;
 use iyes_loopless::prelude::*;
-use resources::map_file::MapFileRes;
+use world::WorldPlugin;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum AppState {
@@ -14,8 +17,9 @@ pub enum AppState {
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
+        .add_plugin(EguiPlugin)
+        .add_plugin(WorldPlugin)
         .add_loopless_state(AppState::MainMenu)
-        .insert_resource(MapFileRes::default())
         .add_plugin(scenes::menu::MenuPlugin)
         .add_plugin(scenes::editor::EditorPlugin)
         .run();

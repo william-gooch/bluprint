@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use bevy_egui::{egui, EguiContext, EguiPlugin};
+use bevy_egui::{egui, EguiContext};
 use iyes_loopless::prelude::*;
 
 use crate::AppState;
@@ -26,11 +26,6 @@ fn draw_ui(mut commands: Commands, mut egui_context: ResMut<EguiContext>) {
 
 impl Plugin for MenuPlugin {
     fn build(&self, app: &mut App) {
-        app
-            .add_plugin(EguiPlugin)
-            .add_system(
-                draw_ui
-                    .run_in_state(AppState::MainMenu)
-            );
+        app.add_system(draw_ui.run_in_state(AppState::MainMenu));
     }
 }

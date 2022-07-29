@@ -6,6 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+bluprint-core = { path = "../bluprint-core" }
 bevy = "0.7.0"
 bevy_egui = "0.14.0"
 iyes_loopless = "0.6.0"
+rfd = "0.9.1"
+itertools = "0.10.3"
